@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Circles</title>
+    <script type="text/javascript" src="paper-full.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="paper.jsproject.css">
+
+    <script type="text/paperscript" canvas="myCanvas">
+
+        var circles = [];
+//when key is presse place circle randomly on screan and store circle in array
+        function onKeyDown(event) {
+            var maxPoint = new Point(view.size.width, view.size.height);
+            var randomPoint = Point.random();
+            var point = maxPoint * randomPoint;
+            var newCircle = new Path.Circle(point, 500)
+            newCircle.fillColor = "orange";
+            circles.push(newCircle);
+        }
+//each circle in array will get these properties (shrink and change colors)
+        function onFrame(event){
+        for(var i = 0; i < circles.length; i++){
+            circles[i].fillColor.hue +=1;
+            circles[i].scale(.9);
+    }
+
+    }
+
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+</html>
